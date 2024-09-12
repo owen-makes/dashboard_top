@@ -47,10 +47,10 @@ body {
 }
 
 sidebar {
-  padding-left: 1rem;
+  padding-left: 1.5rem;
   padding-top: 1rem;
   padding-right: 1rem;
-  height: inherit;
+  height: 100%;
   background-color: var(--highlight-1);
   display: grid;
   grid-area: sidebar;
@@ -62,7 +62,7 @@ sidebar {
 .logo {
   margin-top: 0px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-content: top;
   font-size: 1rem;
 }
@@ -81,7 +81,7 @@ sidebar {
   display: grid;
   grid-template-rows: repeat(auto-fit, minmax(20px, 1fr));
   align-items: center;
-  gap: 6px;
+  gap: 20px;
 }
 
 .extra-menu {
@@ -102,7 +102,8 @@ sidebar {
 }
 
 .menu-item > p {
-  margin-left: 10px;
+  margin-left: 20px;
+  font-weight: 800;
 }
 
 header {
@@ -118,6 +119,9 @@ header {
   gap: 1rem;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: 1fr 1fr;
+  -webkit-box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.2); 
+  box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.2);
+  position:relative;
 }
 
 .action-buttons {
@@ -207,7 +211,7 @@ img {
   grid-template-areas: 
   "projects announcements"
   "projects trending";
-  padding: 2rem;
+  padding: 1rem 2rem;
   column-gap: 0.8rem;
 }
 
@@ -246,6 +250,7 @@ h3.title {
 
 .card > p {
   align-self: start;
+  color: rgb(98, 98, 98);
 }
 
 .card > .tile {
@@ -274,6 +279,11 @@ h3.title {
   gap: 0.5rem;
 }
 
+.announcements-container {
+  justify-items: center;
+  align-items: center;
+}
+
 .trending-container{
   padding-top: 0.5rem;
 }
@@ -292,7 +302,7 @@ h3.title {
 }
 
 .announce:nth-of-type(even) {
-  padding-top: 0.5rem;
+  padding: 0.5rem 0rem;
   border-top: 1px solid var(--secondary-bg);
   border-bottom: 1px solid var(--secondary-bg);
 }
@@ -325,11 +335,30 @@ div > img {
 
 
 .card:hover {
-  top: -10px;
   box-shadow: 0 4px 5px rgba(0,0,0,0.2);
 }
 
 button:hover {
-  top: -10px;
-  box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 5px var(--highlight-2);
+}
+
+@media screen and (max-width: 800px) {
+  .announcements, 
+  .trending, .logo > h1, .menu-item > p {
+    display: none;
+  }
+
+  body {
+    grid-template-columns: 0.5fr 4fr;
+  }
+
+  sidebar {
+    justify-content: center;
+    grid-template-columns: 1fr;
+  }
+
+  .main-container {
+    grid-template-columns: 1fr;
+    grid-template-areas: "projects";
+  }
 }
